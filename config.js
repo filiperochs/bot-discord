@@ -1,7 +1,11 @@
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 module.exports = {
   app: {
     px: "+",
-    token: "OTQxNDY4MTQ5MzczNjI4NDY4.YgWYig.t-Z_ZiUwtdh5aYqiMQ4MryqvoJs",
+    token: process.env.TOKEN,
     playing: "by Filipe",
   },
 
