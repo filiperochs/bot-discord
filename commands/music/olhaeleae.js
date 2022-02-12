@@ -21,13 +21,20 @@ module.exports = {
         `I can't join the voice channel ${message.author}... try again ? ❌`
       );
     }
+
     client.on("voiceStateUpdate", async (oldState, newState) => {
       const { channel: previousVoiceChannel } = oldState;
       const { channel: currentVoiceChannel, member } = newState;
 
       if (!member) return;
-      if (!currentVoiceChannel || previousVoiceChannel === currentVoiceChannel)
+      if (
+        !currentVoiceChannel ||
+        previousVoiceChannel === currentVoiceChannel
+      ) {
         return;
+      }
+
+      if (message.member.voice.channel !== currentVoiceChannel) return;
 
       // const sounds = this.getSoundsFromSoundFolder();
       const sound = fs.readFileSync("sounds/olhaeleae.mp3");
@@ -44,7 +51,10 @@ module.exports = {
 
       // queue.connect(currentVoiceChannel);
 
-      if (queue.tracks) queue.addTrack(res.tracks[0]);
+      if (queue.tracks) {
+        queue.clear();
+        queue.addTrack(res.tracks[0]);
+      }
 
       if (!queue.playing) await queue.play();
     });
