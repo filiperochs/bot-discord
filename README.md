@@ -2,6 +2,12 @@
 Olha ele ae bot
 
 
+Disponível em top.gg: [Olha ele ae bot](https://top.gg/bot/941468149373628468)
+
+![Discord Bots](https://top.gg/api/widget/servers/941468149373628468.svg)
+![Discord Bots](https://top.gg/api/widget/upvotes/941468149373628468.svg)
+![Discord Bots](https://top.gg/api/widget/owner/941468149373628468.svg)
+
 Se você quiser adicionar o bot no seu servidor:
 
 https://discord.com/api/oauth2/authorize?client_id=941468149373628468&permissions=8&scope=bot%20applications.commands
