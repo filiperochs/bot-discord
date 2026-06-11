@@ -6,7 +6,7 @@ module.exports = {
   app: {
     px: "+",
     token: process.env.TOKEN,
-    playing: "by Filipe",
+    playing: "filiperochs.github.io",
   },
 
   opt: {
