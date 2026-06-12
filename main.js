@@ -1,22 +1,27 @@
 const { Player } = require("discord-player");
-const { Client, Intents } = require("discord.js");
-const fs = require("fs");
+const { DefaultExtractors } = require("@discord-player/extractor");
+const { Client, GatewayIntentBits } = require("discord.js");
 
 global.client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_VOICE_STATES,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.MessageContent,
   ],
-  disableMentions: "everyone",
+  allowedMentions: { parse: ["users", "roles"] },
 });
 
 client.config = require("./config");
+client.olhaeleaeWatchers = new Map();
 
 global.player = new Player(client, client.config.opt.discordPlayer);
 
 require("./src/loader");
 require("./src/events");
 
-client.login(client.config.app.token);
+(async () => {
+  await player.extractors.loadMulti(DefaultExtractors);
+  await client.login(client.config.app.token);
+})();

@@ -21,4 +21,11 @@ Faça o clone do repositório, e configure um arquivo .env
 No arquivo .env coloque a chave Token da seguinte forma:
 TOKEN=SEU_TOKEN
 
+Requer Node.js >= 18.
+
+No [Discord Developer Portal](https://discord.com/developers/applications),
+na aba "Bot" da sua aplicação, habilite os intents privilegiados
+**"Message Content Intent"** e **"Server Members Intent"** — sem eles o bot
+não conecta (erro `Used disallowed intents`).
+
 Salve, dê um yarn install e logo após um yarn start.

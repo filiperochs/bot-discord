@@ -19,7 +19,7 @@ module.exports = (client, message) => {
       (x) => x.name === DJ.roleName
     );
 
-    if (!message.member._roles.includes(roleDJ.id)) {
+    if (!message.member.roles.cache.has(roleDJ.id)) {
       return message.channel.send(
         `Comando reservado para o cargo ${DJ.roleName} do servidor ${message.author}... tentar denovo ? ❌`
       );
@@ -33,8 +33,8 @@ module.exports = (client, message) => {
       );
 
     if (
-      message.guild.me.voice.channel &&
-      message.member.voice.channel.id !== message.guild.me.voice.channel.id
+      message.guild.members.me.voice.channel &&
+      message.member.voice.channel.id !== message.guild.members.me.voice.channel.id
     )
       return message.channel.send(
         `Você não está em um canal de voz ${message.author}... tentar denovo ? ❌`
